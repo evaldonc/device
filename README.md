@@ -20,4 +20,4 @@ API for device management, built with Java 21, Spring Boot, and PostgreSQL.
 
 1. **Build the project:**
    ```bash
-   mvn clean package
+   docker compose up
