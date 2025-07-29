@@ -10,8 +10,8 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:postgresDB}
+    url: ${SPRING_DATASOURCE_URL}
     hikari:
-      username: postgres
-      password: ${POSTGRES_PASSWORD:passwd456}
+      username: ${POSTGRES_USERNAME}
+      password: ${POSTGRES_PASSWORD}
       maximum-pool-size: 10

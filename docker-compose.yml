@@ -1,0 +1,26 @@
+services:
+  db:
+    image: bitnami/postgresql:latest
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=passwd456
+      - POSTGRES_DB=postgresDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/bitnami/postgresql
+
+  device-api:
+    build: .
+    image: device-api:latest
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgresDB
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=passwd456
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
